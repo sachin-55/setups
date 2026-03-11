@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # $3 is 1 for branch checkout and 0 for file checkout
 if [ "$3" = "1" ]; then
   current_branch=$(git rev-parse --abbrev-ref HEAD)
