@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# $3 is 1 for branch checkout and 0 for file checkout
+if [ "$3" = "1" ]; then
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  
+  # Run validation
+  if ! npx validate-branch-name; then
+    # Check if this branch was just created
+    # reflog message for creation is "checkout: moving from <old> to <new>" BUT
+    # branch reflog (git reflog show <branch>) first entry is "branch: Created from HEAD"
+    if git reflog show "$current_branch" -n 1 | grep -q "branch: Created from"; then
+      echo "🛑 Invalid branch name detected during creation."
+      echo "🔙 Reverting to previous branch and deleting '$current_branch'..."
+      
+      # Switch back to previous branch
+      git checkout - >/dev/null 2>&1
+      
+      # Force delete the invalid branch
+      git branch -D "$current_branch" >/dev/null 2>&1
+      
+      exit 1
+    else
+      echo "⚠️  Branch name is invalid, but not auto-deleting (existing branch)."
+      exit 1
+    fi
+  fi
+fi
