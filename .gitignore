@@ -40,6 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-add_log_entry.js
 my-notes.txt
 my-logs.txt
