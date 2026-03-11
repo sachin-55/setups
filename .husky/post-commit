@@ -1,0 +1,1 @@
+node "$(dirname "$0")/../scripts/add_log_entry.js"
