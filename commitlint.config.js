@@ -9,7 +9,7 @@ module.exports = {
   rules: {
     'body-leading-blank': [2, 'always'],
     'footer-leading-blank': [2, 'always'],
-    // 'body-max-line-length': [2, 'always', 100], // body lines max 100 chars
+    'body-max-line-length': [2, 'always', 240], // body lines max 100 chars
     // 'footer-max-line-length': [2, 'always', 100], // footer lines max 100 chars
     //   'header-max-length': [2, 'always', 72],
     //   'header-min-length': [2, 'always', 10],
