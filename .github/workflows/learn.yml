@@ -1,0 +1,13 @@
+name: Learning CI
+
+on:
+  push:
+    branches: [feat/development]
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Hello this is my first pipeline step"
+      - run: echo "This is automatically run pipeline"
